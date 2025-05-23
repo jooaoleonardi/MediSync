@@ -5,103 +5,159 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MediSync - Login</title>
     <link rel="stylesheet" href="style.css" />
+    <meta name="description" content="Faça login no MediSync para agendar suas consultas médicas de forma rápida e fácil." />
+    <meta name="keywords" content="MediSync, login, agendamento de consulta, saúde, médico, online" />
+    <meta name="author" content="Seu Nome ou Nome da Empresa" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
 </head>
 <body>
-    <nav class="accessibility-nav">
-        <button onclick="toggleSurdo()" aria-label="Ativar/desativar modo para deficientes auditivos">
-            <img src="icon surdo.png" alt="Ícone para deficientes auditivos" />
-        </button>
-        <button onclick="toggleLegenda()" aria-label="Ativar/desativar visualização de legendas adicionais">
-            <img src="icon legenda (2).png" alt="Ícone de legendas adicionais" />
-        </button>
-    </nav>
+    <header class="accessibility-header" role="banner">
+        <nav aria-label="Recursos de Acessibilidade">
+            <ul>
+                <li>
+                    <button id="toggleSurdo" aria-label="Ativar/desativar modo para deficientes auditivos" title="Modo para Deficientes Auditivos">
+                        <img src="icon surdo.png" alt="Ícone de deficiente auditivo" />
+                        <span class="sr-only">Ativar/desativar modo para deficientes auditivos</span>
+                    </button>
+                </li>
+                <li>
+                    <button id="toggleLegenda" aria-label="Ativar/desativar visualização de legendas adicionais" title="Visualização de Legendas">
+                        <img src="icon legenda (2).png" alt="Ícone de legendas" />
+                        <span class="sr-only">Ativar/desativar visualização de legendas adicionais</span>
+                    </button>
+                </li>
+                <li>
+                    <button id="toggleContrast" aria-label="Ativar/desativar alto contraste" title="Alto Contraste">
+                        <img src="olho-acessibilidade.png" alt="Ícone de alto contraste" />
+                        <span class="sr-only">Ativar/desativar alto contraste</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="container">
-        <div class="left">
+    <main class="container" role="main">
+        <section class="left" aria-labelledby="image-description">
             <img
                 src="foto tela de login.jpg"
-                alt="Imagem ilustrativa de um tablet com uma interface médica"
+                alt="Imagem ilustrativa de um tablet com uma interface médica exibindo um aplicativo de agendamento de consultas. A tela mostra opções para escolher especialidade, data e horário, e alguns dados de paciente fictício."
                 class="responsive-img"
                 role="img"
-                aria-label="Imagem de um tablet exibindo um aplicativo médico"
+                id="image-description"
             />
-        </div>
-        <div class="right">
+        </section>
+
+        <section class="right" aria-labelledby="login-heading">
             <div class="login-box">
-                <div class="logo">MediSync</div>
-                <h2>Faça login para agendar sua consulta!</h2>
+                <h1 class="logo" id="login-heading">MediSync</h1>
+                <p class="subtitle">Faça login para agendar sua consulta!</p>
 
-                <form>
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" placeholder="Digite seu e-mail" required />
+                <form aria-label="Formulário de Login">
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="seuemail@exemplo.com"
+                            required
+                            autocomplete="username"
+                            aria-describedby="email-hint"
+                        />
+                        <small id="email-hint" class="hint-text">Utilize o e-mail cadastrado.</small>
+                    </div>
 
-                    <label for="senha">Senha</label>
-                    <div class="password-container">
-                        <input type="password" id="senha" placeholder="Digite sua senha" required />
-                        <span class="toggle-password" onclick="togglePassword()">
-                            <img src="icon-olho.png" alt="Mostrar senha" />
-                        </span>
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <div class="password-container">
+                            <input
+                                type="password"
+                                id="senha"
+                                name="senha"
+                                placeholder="MinhaSenhaForte123!"
+                                required
+                                autocomplete="current-password"
+                                aria-describedby="password-hint"
+                            />
+                            <button
+                                type="button"
+                                class="toggle-password"
+                                id="togglePasswordBtn"
+                                aria-label="Mostrar ou ocultar senha"
+                                title="Mostrar/Ocultar Senha"
+                            >
+                                <img src="olho-acessibilidade.png" alt="Ícone de um olho aberto para mostrar senha" />
+                                <span class="sr-only">Mostrar/Ocultar Senha</span>
+                            </button>
+                        </div>
+                        <small id="password-hint" class="hint-text">Mínimo de 8 caracteres, com letras e números.</small>
                     </div>
 
                     <div class="extras">
-                        <label><input type="checkbox" /> lembrar-me a senha!</label>
-                        <a href="#">Esqueceu sua senha?</a>
+                        <label for="remember-me" class="checkbox-label">
+                            <input type="checkbox" id="remember-me" name="remember-me" />
+                            Lembrar-me
+                        </label>
+                        <a href="#" class="forgot-password-link" aria-label="Clique para redefinir sua senha">Esqueceu sua senha?</a>
                     </div>
 
-                    <button type="submit">ENTRAR</button>
+                    <button type="submit" class="submit-button">ENTRAR</button>
                 </form>
 
                 <div class="divider"><span>ou</span></div>
 
-                <div class="social-login">
-                    <button class="google-btn">
-                        <img src="google-logo.svg" alt="Google logo" width="20" />
+                <div class="social-login" aria-label="Opções de login social">
+                    <button class="google-btn" aria-label="Continuar com Google">
+                        <img src="google-logo.svg" alt="Logo do Google" width="20" height="20" />
                         Continuar com Google
                     </button>
-                    <button class="apple-btn">
-                        <img src="mac-logo.svg" alt="Apple logo" width="20" />
+                    <button class="apple-btn" aria-label="Continuar com Apple">
+                        <img src="mac-logo.svg" alt="Logo da Apple" width="20" height="20" />
                         Continuar com Apple
                     </button>
                 </div>
 
                 <div class="register">
-                    <a href="#">Não possuo cadastro! Cadastre aqui</a>
+                    <p>Não possui cadastro? <a href="#" aria-label="Clique aqui para se cadastrar">Cadastre aqui</a></p>
                 </div>
 
-                <div id="caption-box" class="caption" aria-live="polite" hidden>
-                    Legendas ativadas. Essa é uma simulação de conteúdo falado.
+                <div id="caption-box" class="caption" role="status" aria-live="polite" hidden>
+                    Legendas ativadas. Esta é uma simulação de conteúdo falado para demonstração de acessibilidade.
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <script>
-        function togglePassword() {
+        document.getElementById('togglePasswordBtn').addEventListener('click', function() {
             const senhaInput = document.getElementById('senha');
             const type = senhaInput.getAttribute('type') === 'password' ? 'text' : 'password';
             senhaInput.setAttribute('type', type);
-        }
+            this.setAttribute('aria-label', type === 'password' ? 'Mostrar senha' : 'Ocultar senha');
+        });
 
-        function toggleSound() {
-            alert('Simulando modo sem som ativado!');
-        }
+        document.getElementById('toggleSurdo').addEventListener('click', function() {
+            alert('Simulando acionamento do modo para deficientes auditivos. Em uma aplicação real, isso poderia ajustar volume, oferecer transcrições, etc.');
+        });
 
-        function toggleContrast() {
+        document.getElementById('toggleLegenda').addEventListener('click', function() {
+            const captionBox = document.getElementById('caption-box');
+            captionBox.hidden = !captionBox.hidden;
+            if (!captionBox.hidden) {
+                alert('Simulando acionamento da visualização de legendas adicionais. As legendas foram ativadas abaixo.');
+            } else {
+                alert('Simulando desativação da visualização de legendas adicionais. As legendas foram desativadas.');
+            }
+        });
+
+        document.getElementById('toggleContrast').addEventListener('click', function() {
             document.body.classList.toggle('high-contrast');
-        }
-
-        function toggleCaptions() {
-            const caption = document.getElementById('caption-box');
-            caption.hidden = !caption.hidden;
-        }
-
-        function toggleSurdo() {
-            alert('Simulando acionamento do modo para deficientes auditivos.');
-        }
-
-        function toggleLegenda() {
-            alert('Simulando acionamento da visualização de legendas adicionais.');
-        }
+            if (document.body.classList.contains('high-contrast')) {
+                alert('Modo de alto contraste ativado.');
+            } else {
+                alert('Modo de alto contraste desativado.');
+            }
+        });
     </script>
 </body>
 </html>
