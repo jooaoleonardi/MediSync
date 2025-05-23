@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediSync - Login</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <nav class="accessibility-nav">
+        <button onclick="toggleSurdo()" aria-label="Ativar/desativar modo para deficientes auditivos">
+            <img src="icon surdo.png" alt="Ícone para deficientes auditivos" />
+        </button>
+        <button onclick="toggleLegenda()" aria-label="Ativar/desativar visualização de legendas adicionais">
+            <img src="icon legenda (2).png" alt="Ícone de legendas adicionais" />
+        </button>
+    </nav>
+
+    <div class="container">
+        <div class="left">
+            <img
+                src="foto tela de login.jpg"
+                alt="Imagem ilustrativa de um tablet com uma interface médica"
+                class="responsive-img"
+                role="img"
+                aria-label="Imagem de um tablet exibindo um aplicativo médico"
+            />
+        </div>
+        <div class="right">
+            <div class="login-box">
+                <div class="logo">MediSync</div>
+                <h2>Faça login para agendar sua consulta!</h2>
+
+                <form>
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="Digite seu e-mail" required />
+
+                    <label for="senha">Senha</label>
+                    <div class="password-container">
+                        <input type="password" id="senha" placeholder="Digite sua senha" required />
+                        <span class="toggle-password" onclick="togglePassword()">
+                            <img src="icon-olho.png" alt="Mostrar senha" />
+                        </span>
+                    </div>
+
+                    <div class="extras">
+                        <label><input type="checkbox" /> lembrar-me a senha!</label>
+                        <a href="#">Esqueceu sua senha?</a>
+                    </div>
+
+                    <button type="submit">ENTRAR</button>
+                </form>
+
+                <div class="divider"><span>ou</span></div>
+
+                <div class="social-login">
+                    <button class="google-btn">
+                        <img src="google-logo.svg" alt="Google logo" width="20" />
+                        Continuar com Google
+                    </button>
+                    <button class="apple-btn">
+                        <img src="mac-logo.svg" alt="Apple logo" width="20" />
+                        Continuar com Apple
+                    </button>
+                </div>
+
+                <div class="register">
+                    <a href="#">Não possuo cadastro! Cadastre aqui</a>
+                </div>
+
+                <div id="caption-box" class="caption" aria-live="polite" hidden>
+                    Legendas ativadas. Essa é uma simulação de conteúdo falado.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const senhaInput = document.getElementById('senha');
+            const type = senhaInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            senhaInput.setAttribute('type', type);
+        }
+
+        function toggleSound() {
+            alert('Simulando modo sem som ativado!');
+        }
+
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+
+        function toggleCaptions() {
+            const caption = document.getElementById('caption-box');
+            caption.hidden = !caption.hidden;
+        }
+
+        function toggleSurdo() {
+            alert('Simulando acionamento do modo para deficientes auditivos.');
+        }
+
+        function toggleLegenda() {
+            alert('Simulando acionamento da visualização de legendas adicionais.');
+        }
+    </script>
+</body>
+</html>
