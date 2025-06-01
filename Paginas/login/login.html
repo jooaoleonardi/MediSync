@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediSync</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css"/>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <div class="logo-container">
+                <span class="logo-text">MediSync</span>
+            </div>
+            <p class="login-title">Faça login para agendar sua consulta!</p>
+            <span class="simulated-caption general-caption">Formulário de acesso ao sistema MediSync. Preencha os campos para continuar.</span>
+
+            <form>
+                <div class="input-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" aria-describedby="email-caption">
+                    <span id="email-caption" class="simulated-caption">Digite seu endereço de e-mail cadastrado no sistema.</span>
+                </div>
+
+                <div class="input-group">
+                    <label for="senha">Senha</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="senha" name="senha" aria-describedby="senha-caption">
+                        <span class="password-toggle">
+                            <i class="fas fa-eye-slash"></i> </span>
+                    </div>
+                    <span id="senha-caption" class="simulated-caption">Digite sua senha. Verifique se as teclas Caps Lock ou Num Lock estão ativadas.</span>
+                </div>
+
+                <div class="options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="lembrar-me">
+                        <label for="lembrar-me">Lembrar-me a senha!</label>
+                    </div>
+                    <a href="#" class="forgot-password">Esqueceu sua senha?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Entrar</button>
+                <span class="simulated-caption general-caption">Ao clicar em Entrar, você concorda com nossos Termos de Serviço.</span>
+
+                <div class="divider">
+                    <span>ou</span>
+                </div>
+
+                <button type="button" class="btn btn-secondary btn-google">
+                    <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="Google logo">
+                    Continuar com Google
+                </button>
+                <button type="button" class="btn btn-secondary btn-apple">
+                    <img src="https://img.icons8.com/ios-filled/16/000000/mac-os.png" alt="Apple logo">
+                    Continuar com Apple
+                </button>
+                <p class="signup-link">
+                    Não possuo cadastro! <a href="/Paginas/cadastro/cadastro.html">Cadastre aqui</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="accessibility-icons">
+        <button id="toggle-contrast" class="access-icon" title="Alto Contraste">
+            <img src="icon-contraste.png" alt="Ícone de Alto Contraste">
+        </button>
+        <button id="toggle-text-size" class="access-icon" title="Aumentar Texto">
+            <img src="icon-aumentar-texto.png" alt="Ícone de Aumentar Texto">
+        </button>
+        <button id="reset-text-size" class="access-icon" title="Restaurar Tamanho do Texto">
+            <img src="icon-reverter.png" alt="Ícone de Restaurar Tamanho do Texto">
+        </button>
+        <button id="toggle-captions" class="access-icon" title="Ativar/Desativar Legendas Simuladas">
+            <img src="legendas.png" alt="Ícone de Legendas">
+        </button>
+    </div>
+
+   <script>
+        const contrastButton = document.getElementById('toggle-contrast');
+        const textSizeButton = document.getElementById('toggle-text-size');
+        const resetTextButton = document.getElementById('reset-text-size');
+        const captionsButton = document.getElementById('toggle-captions');
+        const body = document.body;
+
+        let originalStyles = new Map();
+        let currentTextMultiplier = 1.0;
+        const FONT_STEP_MULTIPLIER = 0.1;
+
+        const elementsToResizeConfig = [
+            { selector: '.logo-text', property: 'fontSize' },
+            { selector: '.login-title', property: 'fontSize' },
+            { selector: '.input-group label', property: 'fontSize' },
+            { selector: '.input-group input', property: 'fontSize' },
+            { selector: '.remember-me label', property: 'fontSize' },
+            { selector: '.forgot-password', property: 'fontSize' },
+            { selector: '.btn', property: 'fontSize' },
+            { selector: '.divider span', property: 'fontSize' },
+            { selector: '.signup-link', property: 'fontSize' },
+            { selector: '.signup-link a', property: 'fontSize' },
+            { selector: '.simulated-caption', property: 'fontSize' }
+        ];
+
+        function storeOriginalStylesOnce() {
+            if (originalStyles.size === 0) {
+                elementsToResizeConfig.forEach(config => {
+                    document.querySelectorAll(config.selector).forEach(element => {
+                        if (!originalStyles.has(element)) {
+                            const originalValue = parseFloat(window.getComputedStyle(element)[config.property]);
+                            originalStyles.set(element, {
+                                originalValue: originalValue,
+                                property: config.property
+                            });
+                        }
+                    });
+                });
+            }
+        }
+
+        function applyTextStyles() {
+            if (originalStyles.size === 0) {
+                storeOriginalStylesOnce();
+                if (originalStyles.size === 0) return;
+            }
+
+            originalStyles.forEach((styleInfo, element) => {
+                const newValue = styleInfo.originalValue * currentTextMultiplier;
+                element.style[styleInfo.property] = newValue + 'px';
+            });
+        }
+        
+        storeOriginalStylesOnce();
+
+        textSizeButton.addEventListener('click', () => {
+            currentTextMultiplier += FONT_STEP_MULTIPLIER;
+            applyTextStyles();
+            textSizeButton.classList.toggle('active', currentTextMultiplier !== 1.0);
+            resetTextButton.classList.toggle('active', currentTextMultiplier !== 1.0);
+        });
+
+        resetTextButton.addEventListener('click', () => {
+            currentTextMultiplier = 1.0;
+            applyTextStyles();
+            textSizeButton.classList.remove('active');
+            resetTextButton.classList.remove('active');
+        });
+
+        const captionElements = document.querySelectorAll('.simulated-caption');
+        let captionsActive = false;
+
+        captionsButton.addEventListener('click', () => {
+            captionsActive = !captionsActive;
+            captionElements.forEach(caption => {
+                caption.style.display = captionsActive ? 'block' : 'none';
+            });
+            captionsButton.classList.toggle('active', captionsActive);
+        });
+
+        contrastButton.addEventListener('click', () => {
+            body.classList.toggle('high-contrast');
+            contrastButton.classList.toggle('active', body.classList.contains('high-contrast'));
+            const accessibilityIcons = document.querySelector('.accessibility-icons');
+            if (accessibilityIcons) {
+                accessibilityIcons.classList.toggle('high-contrast-icons', body.classList.contains('high-contrast'));
+            }
+        });
+    </script>
+</body>
+</html>

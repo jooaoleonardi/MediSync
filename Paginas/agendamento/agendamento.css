@@ -1,0 +1,192 @@
+/* ==========================================================================
+   1. Defaults & Variáveis Globais
+   ========================================================================== */
+:root {
+    --cor-texto-principal: #D9D9D9;
+    --cor-fundo-container: rgba(45, 45, 45, 0.9);
+    --cor-fundo-input: #D9D9D9;
+    --cor-texto-input: #000000;
+    --cor-botao-primario-fundo: #D9D9D9;
+    --cor-botao-primario-texto: #000000;
+    --cor-fundo-pagina: #1a1a1a;
+    --cor-borda-fraca: #555555;
+    --cor-titulo-h1-h2: #cccccc;
+    --cor-titulo-h3-agenda: #bbbbbb;
+    --cor-fundo-periodo-agenda: rgba(60, 60, 60, 0.8);
+    --cor-fundo-item-agenda: rgba(75, 75, 75, 0.9);
+    --cor-botao-hover-fundo: #c0c0c0;
+}
+
+body {
+    background-image: url('agendamento-fundo.jpg'); 
+    background-color: var(--cor-fundo-pagina);
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--cor-texto-principal);
+    line-height: 1.6;
+    min-height: 100vh; 
+    width: 100%;
+    overflow-x: hidden; 
+}
+
+/* ==========================================================================
+   2. Layout da Página (Estrutura principal)
+   ========================================================================== */
+.container { 
+    max-width: 800px;
+    width: 80%;
+    margin: 20px auto; 
+    background: var(--cor-fundo-container);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* ==========================================================================
+   3. Elementos de Conteúdo Geral (Títulos, Linhas Horizontais)
+   ========================================================================== */
+h1,
+h2 {
+    color: var(--cor-titulo-h1-h2);
+}
+
+h1 { 
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    border-bottom: 2px solid var(--cor-borda-fraca);
+    padding-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+hr { 
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 0;
+    border-top: 1px solid var(--cor-borda-fraca);
+}
+
+/* ==========================================================================
+   4. Estilização de Formulários (Grupos, Labels, Inputs, Botões)
+   ========================================================================== */
+.form-group { 
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--cor-texto-principal);
+}
+
+.form-group select,
+.form-group input[type="date"] { 
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--cor-borda-fraca);
+    border-radius: 4px;
+    box-sizing: border-box; 
+    background-color: var(--cor-fundo-input);
+    color: var(--cor-texto-input);
+}
+
+.form-group input[type="date"]::-webkit-calendar-picker-indicator { 
+    filter: invert(1); 
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: var(--cor-botao-primario-fundo);
+    color: var(--cor-botao-primario-texto);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease; 
+}
+
+button:hover {
+    background-color: var(--cor-botao-hover-fundo);
+}
+
+/* ==========================================================================
+   5. Seção da Agenda de Consultas
+   ========================================================================== */
+#agendaConsultas { 
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; 
+}
+
+.periodo-agenda { 
+    background-color: var(--cor-fundo-periodo-agenda);
+    padding: 15px;
+    border-radius: 6px;
+    flex: 1; 
+    min-width: 250px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.periodo-agenda h3 { 
+    margin-top: 0;
+    color: var(--cor-titulo-h3-agenda);
+    border-bottom: 1px solid var(--cor-borda-fraca);
+    padding-bottom: 5px;
+}
+
+.lista-consultas {
+    list-style-type: none;
+    padding: 0;
+}
+
+.lista-consultas li { 
+    background-color: var(--cor-fundo-item-agenda);
+    border: 1px solid var(--cor-borda-fraca);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: var(--cor-texto-principal);
+}
+
+.lista-consultas li strong { 
+    color: #e0e0e0; 
+}
+
+/* ==========================================================================
+   6. Design Responsivo (Media Queries)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .container {
+        width: 95%; 
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #agendaConsultas {
+        flex-direction: column; 
+    }
+
+    h1 {
+        font-size: 1.8em; 
+    }
+
+    h2 {
+        font-size: 1.5em; 
+    }
+
+    button {
+        font-size: 15px; 
+    }
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento Médico</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="agendamento.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Agendamento de Consulta</h1>
+
+        <form id="agendamentoForm">
+            <div class="form-group">
+                <label for="especialidade">Especialidade:</label>
+                <select id="especialidade" name="especialidade">
+                    <option value="">Selecione a especialidade</option>
+                    <option value="cardiologia">Cardiologia</option>
+                    <option value="dermatologia">Dermatologia</option>
+                    <option value="ortopedia">Ortopedia</option>
+                    <option value="ginecologia">Ginecologia</option>
+                    <option value="pediatria">Pediatria</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="convenio">Convênio:</label>
+                <select id="convenio" name="convenio">
+                    <option value="">Selecione o convênio</option>
+                    <option value="sus">SUS</option>
+                    <option value="amil">Amil</option>
+                    <option value="bradesco">Bradesco Saúde</option>
+                    <option value="sulamerica">Sulamérica</option>
+                    <option value="particular">Particular</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="doutor">Doutor(a):</label>
+                <select id="doutor" name="doutor">
+                    <option value="">Selecione o(a) doutor(a)</option>
+                    <option value="dr_silva">Dr. Silva (Cardiologia)</option>
+                    <option value="dra_santos">Dra. Santos (Dermatologia)</option>
+                    <option value="dr_oliveira">Dr. Oliveira (Ortopedia)</option>
+                    <option value="dra_costa">Dra. Costa (Ginecologia)</option>
+                    <option value="dr_pereira">Dr. Pereira (Pediatria)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="tipoAtendimento">Tipo de Atendimento:</label>
+                <select id="tipoAtendimento" name="tipoAtendimento">
+                    <option value="">Selecione o tipo</option>
+                    <option value="primeira_consulta">Primeira Consulta</option>
+                    <option value="retorno">Retorno</option>
+                    <option value="exames">Exames</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="data">Data:</label>
+                <input type="date" id="data" name="data">
+            </div>
+
+            <div class="form-group">
+                <label for="horario">Horário:</label>
+                <select id="horario" name="horario">
+                    <option value="">Selecione o período</option>
+                    <optgroup label="Manhã">
+                        <option value="08:00">08:00</option>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                    </optgroup>
+                    <optgroup label="Tarde">
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
+                    </optgroup>
+                    <optgroup label="Noite">
+                        <option value="18:00">18:00</option>
+                        <option value="19:00">19:00</option>
+                        <option value="20:00">20:00</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <button type="button" onclick="confirmarConsulta()">Confirmar Consulta</button>
+        </form>
+
+        <hr>
+
+        <h2>Sua Agenda</h2>
+        <div id="agendaConsultas">
+            <div class="periodo-agenda">
+                <h3>Manhã</h3>
+                <ul id="agendaManha" class="lista-consultas">
+                    </ul>
+            </div>
+            <div class="periodo-agenda">
+                <h3>Tarde</h3>
+                <ul id="agendaTarde" class="lista-consultas">
+                    </ul>
+            </div>
+            <div class="periodo-agenda">
+                <h3>Noite</h3>
+                <ul id="agendaNoite" class="lista-consultas">
+                    </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function confirmarConsulta() {
+            const especialidade = document.getElementById('especialidade').value;
+            const convenio = document.getElementById('convenio').value;
+            const doutorSelect = document.getElementById('doutor');
+            const doutorNome = doutorSelect.options[doutorSelect.selectedIndex].text; 
+            const tipoAtendimento = document.getElementById('tipoAtendimento').value;
+            const dataInput = document.getElementById('data').value;
+            const horario = document.getElementById('horario').value;
+
+            if (!especialidade || !convenio || !doutorNome || !tipoAtendimento || !dataInput || !horario) {
+                alert("Por favor, preencha todos os campos.");
+                return;
+            }
+
+            const dataObj = new Date(dataInput);
+            const dia = String(dataObj.getDate() + 1).padStart(2, '0'); 
+            const mes = String(dataObj.getMonth() + 1).padStart(2, '0'); 
+            const ano = dataObj.getFullYear();
+            const dataFormatada = `${dia}/${mes}/${ano}`;
+
+
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `
+                <strong>Dr(a). ${doutorNome}</strong><br>
+                Data: ${dataFormatada} às ${horario}<br>
+                Especialidade: ${especialidade}<br>
+                Convênio: ${convenio}<br>
+                Tipo: ${tipoAtendimento}
+            `;
+
+            const horaAgendada = parseInt(horario.split(':')[0]);
+            let listaDestinoId;
+
+            if (horaAgendada >= 8 && horaAgendada <= 11) {
+                listaDestinoId = 'agendaManha';
+            } else if (horaAgendada >= 14 && horaAgendada <= 17) {
+                listaDestinoId = 'agendaTarde';
+            } else if (horaAgendada >= 18 && horaAgendada <= 20) {
+                listaDestinoId = 'agendaNoite';
+            } else {
+                alert("Horário inválido para categorização na agenda.");
+                return;
+            }
+
+            document.getElementById(listaDestinoId).appendChild(listItem);
+
+            document.getElementById('agendamentoForm').reset();
+
+            alert("Consulta agendada com sucesso!");
+        }
+    </script>
+</body>
+</html>

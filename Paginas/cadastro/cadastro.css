@@ -1,0 +1,605 @@
+/* ==========================================================================
+   1. Defaults & Variables (Conforme seu arquivo)
+   ========================================================================== */
+:root {
+    --cor-texto-principal: #D9D9D9;
+    --cor-fundo-container: rgba(45, 45, 45, 0.9);
+    --cor-fundo-input: #D9D9D9;
+    --cor-texto-input: #000000;
+    --cor-botao-primario-fundo: #D9D9D9;
+    --cor-botao-primario-texto: #000000;
+    --cor-fundo-pagina: #1a1a1a;
+}
+
+body {
+    background-color: var(--cor-fundo-pagina);
+    background-image: url('cadastro-fundo.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex; 
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. Page Layout (Estrutura principal da página)
+   ========================================================================== */
+.page-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    align-items: stretch;
+}   
+
+.cadastro-container {
+    flex: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--cor-fundo-container);
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+.login-container { 
+    display: flex; 
+    width: 400px; 
+    background-color: var(--cor-fundo-container);
+    color: var(--cor-texto-principal);
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    margin: auto; 
+    padding: 0; 
+}
+
+
+/* ==========================================================================
+   3. Form Wrapper (Dentro dos containers de página)
+   ========================================================================== */
+.cadastro-form { /* Div que envolve o form de cadastro */
+    width: 100%;
+    max-width: 900px;
+    padding: 30px 40px;
+    color: var(--cor-texto-principal);
+    box-sizing: border-box;
+}
+
+.login-form {
+    padding: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* ==========================================================================
+   4. General Content Elements (Logo, Headers, Info Texts)
+   ========================================================================== */
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo-text {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--cor-texto-principal);
+}
+
+.cadastro-header { 
+    font-size: 18px;
+    color: var(--cor-texto-principal);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.login-title {
+    font-size: 14px; 
+    margin-bottom: 30px;
+    color: var(--cor-texto-principal);
+    text-align: left; 
+}
+
+.campo-obrigatorio-info { 
+    font-size: 12px;
+    color: var(--cor-texto-principal);
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* ==========================================================================
+   5. Form Structure (Rows, Input Groups)
+   ========================================================================== */
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.input-group { 
+    margin-bottom: 15px; 
+}
+
+.form-row .input-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.input-group.input-idade { flex: 0.5 !important; } 
+.input-group.input-cep { flex: 0.8 !important; }
+.input-group.input-estado { flex: 1 !important; }
+.input-group.input-uf { flex: 0.3 !important; }
+.input-group.input-ssp { flex: 0.5 !important; }
+
+.checkbox-group { 
+    display: flex;
+    align-items: flex-start;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.options { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    font-size: 12px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.divider { 
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    color: var(--cor-texto-principal);
+    font-size: 12px;
+}
+
+.divider span {
+    padding: 0 10px;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--cor-texto-principal); 
+}
+
+
+/* ==========================================================================
+   6. Form Controls (Labels, Inputs, Links, Buttons)
+   ========================================================================== */
+.input-group label { 
+    display: block;
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: var(--cor-texto-principal);
+}
+
+.input-group input[type="text"],
+.input-group input[type="email"],
+.input-group input[type="password"],
+.input-group input[type="number"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--cor-fundo-input);
+    color: var(--cor-texto-input);
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.input-group input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(217, 217, 217, 0.5);
+}
+
+.password-wrapper input { 
+    padding-right: 40px;
+}
+
+.password-toggle { 
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    color: var(--cor-texto-input); 
+}
+
+.remember-me input[type="checkbox"] {
+    margin-right: 5px;
+    accent-color: var(--cor-texto-input);
+}
+
+.remember-me label { 
+    color: var(--cor-texto-principal);
+}
+
+.forgot-password { 
+    color: var(--cor-texto-principal);
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.senha-requisitos-lista { 
+    font-size: 11px;
+    color: #a0a0a0;
+    list-style-position: inside;
+    padding-left: 0;
+    margin-top: 5px;
+}
+
+.senha-requisitos-lista li {
+    margin-bottom: 2px;
+}
+
+.checkbox-group input[type="checkbox"] { 
+    margin-right: 10px;
+    margin-top: 2px;
+    accent-color: var(--cor-texto-input);
+    width: 16px;
+    height: 16px;
+}
+
+.checkbox-label { 
+    font-size: 12px;
+    color: var(--cor-texto-principal);
+    line-height: 1.5;
+}
+
+.btn { 
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary { 
+    background-color: var(--cor-botao-primario-fundo);
+    color: var(--cor-botao-primario-texto);
+    margin-top: 25px; 
+    margin-bottom: 20px; 
+}
+
+.btn-primary:hover {
+    background-color: #c0c0c0;
+}
+
+.btn-secondary { 
+    background-color: #2D2D2D;
+    color: var(--cor-texto-principal);
+    border: 1px solid var(--cor-texto-principal); 
+    margin-bottom: 15px;
+}
+
+.btn-secondary img {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-secondary:hover {
+    background-color: #3f3f3f;
+}
+
+.btn-primary-cadastro { 
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: var(--cor-botao-primario-fundo);
+    color: var(--cor-botao-primario-texto);
+    margin-top: 10px;
+}
+
+.btn-primary-cadastro:hover {
+    background-color: #c0c0c0;
+}
+
+.signup-link { 
+    text-align: center;
+    font-size: 12px;
+    margin-top: 30px;
+    color: var(--cor-texto-principal);
+}
+
+.signup-link a {
+    color: var(--cor-texto-principal);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+.input-group label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: var(--cor-texto-principal);
+}
+
+.input-group label .asterisco-obrigatorio {
+    color: red;
+    font-weight: bold;
+    margin-left: 2px; 
+}
+
+
+/* ==========================================================================
+   7. Accessibility Features (Icons and Captions)
+   ========================================================================== */
+.accessibility-icons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.access-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #000000; 
+    color: #D9D9D9; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px; 
+    border: none;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.access-icon:hover {
+    opacity: 1;
+}
+
+.access-icon.active { 
+    background-color: #D9D9D9;
+    color: #2D2D2D;
+    border: 1px solid #2D2D2D;
+    opacity: 1;
+}
+
+.access-icon img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Legendas Simuladas */
+.simulated-caption {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #FFFFFF;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-top: 6px; 
+    margin-bottom: 6px;
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.simulated-caption.general-caption {
+    width: 100%;
+    margin-bottom: 15px; 
+}
+
+.input-group .simulated-caption {
+    width: 100%;
+    margin-bottom: 15px; 
+}
+
+.simulated-caption.checkbox-caption-fullwidth {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 8px;
+}
+
+/* ==========================================================================
+   8. High Contrast Mode
+   ========================================================================== */
+body.high-contrast {
+    background-color: #000000;
+    color: #FFFFFF;
+    background-image: none;
+}
+
+body.high-contrast .cadastro-container,
+body.high-contrast .login-container { 
+    background-color: rgba(0, 0, 0, 0.95); 
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+
+body.high-contrast .logo-text,
+body.high-contrast .cadastro-header,
+body.high-contrast .login-title,
+body.high-contrast .campo-obrigatorio-info, 
+body.high-contrast .input-group label,
+body.high-contrast .senha-requisitos-lista, 
+body.high-contrast .checkbox-label, 
+body.high-contrast .remember-me label,
+body.high-contrast .forgot-password,
+body.high-contrast .divider span,
+body.high-contrast .signup-link,
+body.high-contrast .signup-link a {
+    color: #FFFFFF;
+}
+
+body.high-contrast .divider::before,
+body.high-contrast .divider::after {
+    border-bottom-color: #FFFFFF;
+}
+
+body.high-contrast .input-group input[type="text"],
+body.high-contrast .input-group input[type="email"],
+body.high-contrast .input-group input[type="password"],
+body.high-contrast .input-group input[type="number"],
+body.high-contrast .input-group input { 
+    background-color: #1c1c1c;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+
+body.high-contrast .input-group input:focus {
+    box-shadow: 0 0 0 2px #FFFFFF;
+}
+
+body.high-contrast .password-toggle { 
+    color: #FFFFFF;
+}
+
+body.high-contrast .btn-primary, 
+body.high-contrast .btn-primary-cadastro { 
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 1px solid #000000; 
+}
+
+body.high-contrast .btn-secondary {
+    background-color: #000000;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+
+body.high-contrast .btn-secondary img { 
+    filter: invert(1) brightness(1.5) contrast(200%);
+}
+
+body.high-contrast .access-icon { 
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 1px solid #000000;
+}
+body.high-contrast .access-icon.active { 
+    background-color: #2D2D2D;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+.accessibility-icons.high-contrast-icons .access-icon {
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 1px solid #000000;
+}
+.accessibility-icons.high-contrast-icons .access-icon.active {
+    background-color: #2D2D2D;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+.accessibility-icons.high-contrast-icons .access-icon img { 
+    filter: invert(1) brightness(1.5) contrast(200%);
+}
+
+body.high-contrast .access-icon img { 
+    filter: invert(1) brightness(1.5) contrast(200%);
+}
+
+
+body.high-contrast .simulated-caption {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #FFFFFF;
+    border: 1px dashed #FFFFFF;
+}
+
+/* ==========================================================================
+   9. Larger Text Mode
+   ========================================================================== */
+body.larger-text {
+    font-size: 16px; 
+}
+body.larger-text .login-title { 
+    font-size: 16px;
+}
+body.larger-text .cadastro-header, 
+body.larger-text .input-group label,
+body.larger-text .checkbox-label,
+body.larger-text .senha-requisitos-lista { 
+    font-size: 14px;
+}
+body.larger-text .input-group input, 
+body.larger-text .btn, 
+body.larger-text .btn-primary-cadastro { 
+    font-size: 16px;
+}
+body.larger-text .options, 
+body.larger-text .signup-link {
+    font-size: 14px;
+}
+body.larger-text .simulated-caption { 
+    font-size: 14px; 
+}
+
+
+/* ==========================================================================
+   10. Responsive Design (Media Queries - Adicione se necessário)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .background-image-container {
+        display: none;
+    }
+    .cadastro-container {
+        flex-basis: 100%;
+        padding: 15px;
+    }
+    .cadastro-form {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    .input-group {
+       margin-bottom: 15px;
+    }
+    .input-group.input-idade,
+    .input-group.input-cep,
+    .input-group.input-estado,
+    .input-group.input-uf,
+    .input-group.input-ssp {
+        flex-basis: auto !important;
+    }
+}

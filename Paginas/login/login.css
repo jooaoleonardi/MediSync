@@ -1,0 +1,472 @@
+/* ==========================================================================
+   1. Defaults & Variáveis
+   ========================================================================== */
+:root {
+    --cor-texto-principal: #D9D9D9;
+    --cor-texto-secundario: #000000;
+    --cor-fundo-container-login: rgba(45, 45, 45, 0.9);
+    --cor-fundo-input: #D9D9D9;
+    --cor-texto-input: #000000;
+    --cor-botao-primario-fundo: #D9D9D9;
+    --cor-botao-primario-texto: #000000;
+    --cor-botao-secundario-fundo: #2D2D2D;
+    --cor-fundo-pagina: #1a1a1a; 
+    --cor-foco-input: rgba(217, 217, 217, 0.5);
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--cor-fundo-pagina);
+    background-image: url('imagem-fundo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden; 
+}
+
+/* ==========================================================================
+   2. Layout da Página (Estrutura principal da página)
+   ========================================================================== */
+.login-container {
+    display: flex;
+    width: 400px;
+    background-color: var(--cor-fundo-container-login);
+    color: var(--cor-texto-principal);
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    margin: auto; 
+}
+
+/* ==========================================================================
+   3. Wrapper do Formulário (Dentro dos containers de página)
+   ========================================================================== */
+.login-form {
+    padding: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   4. Elementos Gerais de Conteúdo (Logo, Cabeçalhos, Textos Informativos)
+   ========================================================================== */
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--cor-texto-principal);
+    text-align: center; 
+    margin-bottom: 20px; 
+}
+
+.login-title {
+    font-size: 14px;
+    margin-bottom: 30px;
+    color: var(--cor-texto-principal);
+    text-align: left;
+}
+
+/* ==========================================================================
+   5. Estrutura do Formulário (Linhas, Grupos de Input)
+   ========================================================================== */
+.input-group {
+    margin-bottom: 5px; 
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    font-size: 12px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    color: var(--cor-texto-principal);
+    font-size: 12px;
+}
+
+.divider span {
+    padding: 0 10px;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--cor-texto-principal);
+}
+
+.signup-link {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 30px;
+    color: var(--cor-texto-principal);
+}
+
+/* ==========================================================================
+   6. Controles do Formulário (Labels, Inputs, Links, Botões)
+   ========================================================================== */
+.input-group label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: var(--cor-texto-principal);
+}
+
+.input-group input { 
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--cor-fundo-input);
+    color: var(--cor-texto-input);
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.input-group input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--cor-foco-input);
+}
+
+.password-wrapper input {
+    padding-right: 40px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    color: var(--cor-texto-input);
+}
+
+.remember-me input[type="checkbox"] {
+    margin-right: 5px;
+    accent-color: var(--cor-texto-input);
+}
+
+.remember-me label {
+    color: var(--cor-texto-principal); 
+}
+
+.forgot-password {
+    color: var(--cor-texto-principal);
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+    background-color: var(--cor-botao-primario-fundo);
+    color: var(--cor-botao-primario-texto);
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+.btn-primary:hover {
+    background-color: #c0c0c0; 
+}
+
+.btn-secondary {
+    background-color: var(--cor-botao-secundario-fundo);
+    color: var(--cor-texto-principal); 
+    border: 1px solid var(--cor-texto-principal); 
+    margin-bottom: 15px;
+}
+
+.btn-secondary img {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-secondary:hover {
+    background-color: #3f3f3f; 
+}
+
+.signup-link a {
+    color: var(--cor-texto-principal);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   7. Recursos de Acessibilidade (Ícones e Legendas)
+   ========================================================================== */
+.accessibility-icons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.access-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--cor-texto-secundario); 
+    color: var(--cor-texto-principal); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    border: none;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.access-icon:hover {
+    opacity: 1;
+}
+
+.access-icon.active {
+    background-color: var(--cor-texto-principal); 
+    color: var(--cor-botao-secundario-fundo);  
+    border: 1px solid var(--cor-botao-secundario-fundo);
+    opacity: 1;
+}
+
+.access-icon img { 
+width: 20px;   
+height: 20px;  
+}
+
+.simulated-caption {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #FFFFFF;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.simulated-caption.general-caption {
+    display: none; 
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.input-group .simulated-caption {
+    width: 100%;
+    margin-bottom: 15px; 
+}
+
+/* ==========================================================================
+   8. Modo de Alto Contraste
+   ========================================================================== */
+body.high-contrast {
+    background-color: #000000;
+    color: #FFFFFF;
+    background-image: none; 
+}
+
+body.high-contrast .login-container {
+    background-color: rgba(0, 0, 0, 0.95);
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+
+body.high-contrast .logo-text,
+body.high-contrast .login-title,
+body.high-contrast .input-group label,
+body.high-contrast .remember-me label,
+body.high-contrast .forgot-password,
+body.high-contrast .divider span, 
+body.high-contrast .divider, 
+body.high-contrast .signup-link,
+body.high-contrast .signup-link a {
+    color: #FFFFFF;
+}
+
+body.high-contrast .divider::before,
+body.high-contrast .divider::after {
+    border-bottom-color: #FFFFFF;
+}
+
+body.high-contrast .input-group input {
+    background-color: #1c1c1c;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+
+body.high-contrast .input-group input:focus {
+    box-shadow: 0 0 0 2px #FFFFFF;
+}
+
+body.high-contrast .password-toggle {
+    color: #FFFFFF;
+}
+
+body.high-contrast .btn-primary {
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 1px solid #000000; 
+}
+
+body.high-contrast .btn-secondary {
+    background-color: #000000;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+
+body.high-contrast .btn-secondary img {
+    filter: invert(1) brightness(1.5) contrast(200%);
+}
+
+body.high-contrast .access-icon {
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 1px solid #000000;
+}
+
+body.high-contrast .access-icon.active {
+    background-color: #2D2D2D; 
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+
+body.high-contrast .access-icon img {
+filter: invert(1) brightness(1.5) contrast(200%);
+} 
+
+body.high-contrast .simulated-caption {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #FFFFFF;
+    border: 1px dashed #FFFFFF;
+}
+
+.accessibility-icons.high-contrast-icons .access-icon {
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 1px solid #000000;
+}
+
+.accessibility-icons.high-contrast-icons .access-icon.active {
+    background-color: #2D2D2D;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+
+.accessibility-icons.high-contrast-icons .access-icon img {
+    filter: invert(1) brightness(1.5) contrast(200%);
+}
+
+.accessibility-icons.high-contrast-icons .access-icon i {
+    color: #000000;
+}
+
+
+/* ==========================================================================
+   9. Modo de Texto Maior
+   ========================================================================== */
+body.larger-text {
+    font-size: 16px; 
+}
+
+body.larger-text .logo-text { 
+    font-size: 28px; 
+}
+
+body.larger-text .login-title {
+    font-size: 16px; 
+}
+
+body.larger-text .input-group label {
+    font-size: 14px; 
+}
+
+body.larger-text .input-group input {
+    font-size: 16px; 
+}
+
+body.larger-text .options,
+body.larger-text .signup-link,
+body.larger-text .divider { 
+    font-size: 14px; 
+}
+
+body.larger-text .btn {
+    font-size: 16px; 
+    padding: 14px; 
+}
+
+body.larger-text .simulated-caption {
+    font-size: 14px;
+}
+
+/* ==========================================================================
+   10. Design Responsivo (Media Queries - Adicione se necessário)
+   ========================================================================== */
+@media (max-width: 768px) { */
+    .login-container {
+        width: 90%;
+        margin: 20px auto;
+    } */
+
+    .login-form {
+        padding: 20px;
+    } 
+
+    .options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+} 
+
+@media (max-width: 480px) { 
+    .logo-text {
+        font-size: 20px;
+    } 
+} 

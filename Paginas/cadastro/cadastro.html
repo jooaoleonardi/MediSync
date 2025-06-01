@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - MediSync</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cadastro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+        <div class="cadastro-container">
+            <div class="cadastro-form">
+                <div class="logo-container">
+                    <span class="logo-text">MediSync</span>
+                    <span class="simulated-caption general-caption" id="caption-logo">Logo da aplicação MediSync.</span>
+                </div>
+                <p class="cadastro-header">Crie sua conta agora e simplifique o seu agendamento médico</p>
+                <span class="simulated-caption general-caption" id="caption-cadastro-header">Instrução principal para o usuário iniciar o processo de criação de conta no sistema MediSync.</span>
+
+                <p class="campo-obrigatorio-info"><span class="asterisco-obrigatorio">*</span> Campo obrigatório</p>
+                <span class="simulated-caption general-caption" id="caption-obrigatorio-info">Aviso indicando que todos os campos marcados com um asterisco (*) são de preenchimento obrigatório.</span>
+
+                <form id="formCadastro">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="nome">Nome<span class="asterisco-obrigatorio">*</span></label>
+                            <span class="simulated-caption" id="caption-nome">Digite seu primeiro nome. Campo obrigatório.</span>
+                            <input type="text" id="nome" name="nome" required aria-describedby="caption-nome">
+                        </div>
+                        <div class="input-group">
+                            <label for="sobrenome">Sobrenome<span class="asterisco-obrigatorio">*</span></label>
+                            <span class="simulated-caption" id="caption-sobrenome">Digite seu sobrenome. Campo obrigatório.</span>
+                            <input type="text" id="sobrenome" name="sobrenome" required aria-describedby="caption-sobrenome">
+                        </div>
+                        <div class="input-group input-idade">
+                            <label for="idade">Idade<span class="asterisco-obrigatorio">*</span></label>
+                            <span class="simulated-caption" id="caption-idade">Digite sua idade. Campo obrigatório.</span>
+                            <input type="number" id="idade" name="idade" required aria-describedby="caption-idade">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group input-cep">
+                            <label for="cep">CEP<span class="asterisco-obrigatorio">*</span></label>
+                            <span class="simulated-caption" id="caption-cep">Digite o Código de Endereçamento Postal da sua residência. Campo obrigatório.</span>
+                            <input type="text" id="cep" name="cep" required aria-describedby="caption-cep">
+                        </div>
+                        <div class="input-group input-estado">
+                            <label for="estado">Estado<span class="asterisco-obrigatorio">*</span></label>
+                            <span class="simulated-caption" id="caption-estado">Digite o estado onde reside. Campo obrigatório.</span>
+                            <input type="text" id="estado" name="estado" required aria-describedby="caption-estado">
+                        </div>
+                        <div class="input-group input-uf">
+                            <label for="uf">UF<span class="asterisco-obrigatorio">*</span></label>
+                            <span class="simulated-caption" id="caption-uf">Digite a sigla da Unidade Federativa (Ex: SP, RJ). Campo obrigatório.</span>
+                            <input type="text" id="uf" name="uf" maxlength="2" required aria-describedby="caption-uf">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="endereco">Endereço<span class="asterisco-obrigatorio">*</span></label>
+                        <span class="simulated-caption" id="caption-endereco">Digite seu endereço completo (rua, número, complemento). Campo obrigatório.</span>
+                        <input type="text" id="endereco" name="endereco" required aria-describedby="caption-endereco">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="cpf">CPF<span class="asterisco-obrigatorio">*</span></label>
+                            <span class="simulated-caption" id="caption-cpf">Digite seu Cadastro de Pessoa Física. Campo obrigatório.</span>
+                            <input type="text" id="cpf" name="cpf" required aria-describedby="caption-cpf">
+                        </div>
+                        <div class="input-group">
+                            <label for="rg">RG<span class="asterisco-obrigatorio">*</span></label>
+                            <span class="simulated-caption" id="caption-rg">Digite seu número de Registro Geral. Campo obrigatório.</span>
+                            <input type="text" id="rg" name="rg" required aria-describedby="caption-rg">
+                        </div>
+                        <div class="input-group input-ssp">
+                            <label for="ssp">SSP<span class="asterisco-obrigatorio">*</span></label>
+                            <span class="simulated-caption" id="caption-ssp">Digite a sigla da Secretaria de Segurança Pública emissora do RG. Campo obrigatório.</span>
+                            <input type="text" id="ssp" name="ssp" required aria-describedby="caption-ssp">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="email">Email<span class="asterisco-obrigatorio">*</span></label>
+                            <span class="simulated-caption" id="caption-email">Digite seu endereço de e-mail principal. Será usado para login e comunicação. Campo obrigatório.</span>
+                            <input type="email" id="email" name="email" required aria-describedby="caption-email">
+                        </div>
+                        <div class="input-group">
+                            <label for="confirmar-email">Confirmar Email<span class="asterisco-obrigatorio">*</span></label>
+                            <span class="simulated-caption" id="caption-confirmar-email">Digite novamente seu endereço de e-mail para confirmação. Deve ser igual ao campo anterior. Campo obrigatório.</span>
+                            <input type="email" id="confirmar-email" name="confirmar-email" required aria-describedby="caption-confirmar-email">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="senha">Senha<span class="asterisco-obrigatorio">*</span></label>
+                            <span class="simulated-caption" id="caption-senha">Crie uma senha para sua conta. Campo obrigatório.</span>
+                            <input type="password" id="senha" name="senha" aria-describedby="caption-senha senha-requisitos-caption" required>
+                            <ul id="senha-requisitos" class="senha-requisitos-lista">
+                                <li>8 dígitos;</li>
+                                <li>Pelo menos uma letra maiúscula;</li>
+                                <li>Pelo menos um símbolo;</li>
+                            </ul>
+                            <span class="simulated-caption" id="senha-requisitos-caption">Requisitos para a criação de uma senha segura: deve conter no mínimo 8 dígitos, pelo menos uma letra maiúscula e pelo menos um símbolo (ex: @, #, $).</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="confirmar-senha">Confirmar Senha<span class="asterisco-obrigatorio">*</span></label>
+                            <span class="simulated-caption" id="caption-confirmar-senha">Digite novamente sua senha para confirmação. Deve ser igual à senha criada anteriormente. Campo obrigatório.</span>
+                            <input type="password" id="confirmar-senha" name="confirmar-senha" required aria-describedby="caption-confirmar-senha">
+                        </div>
+                    </div>
+
+                    <div class="input-group checkbox-group">
+                        <input type="checkbox" id="termos" name="termos" required aria-describedby="caption-termos">
+                        <label for="termos" class="checkbox-label">Ao preencher seus dados, você aceita que a MediSync o contate para estender a você seus serviços. Você pode solicitar a qualquer tempo a exclusão de seus dados caso não deseje ser contatado.</label>
+                        <span class="simulated-caption" id="caption-termos" style="width: 100%; margin-left: 0;">Marque esta caixa para concordar com os termos de serviço e política de privacidade da MediSync, incluindo o contato para oferta de serviços e a possibilidade de solicitar a exclusão dos seus dados. Campo obrigatório.</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary-cadastro">Finalizar Cadastro <a href="Paginas/agendamento/agendamento.html"></a></button>
+                    <span class="simulated-caption general-caption" id="caption-finalizar-cadastro">Clique neste botão para enviar seus dados e completar o cadastro no sistema MediSync. Verifique se todas as informações obrigatórias foram preenchidas corretamente.</span>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="accessibility-icons">
+        <button id="toggle-contrast" class="access-icon" title="Alto Contraste">
+            <img src="icon-contraste.png" alt="Ícone de Alto Contraste">
+        </button>
+        <button id="toggle-text-size" class="access-icon" title="Aumentar Texto">
+            <img src="icon-aumentar-texto.png" alt="Ícone de Aumentar Texto">
+        </button>
+        <button id="reset-text-size" class="access-icon" title="Restaurar Tamanho do Texto">
+            <img src="icon-reverter.png" alt="Ícone de Restaurar Tamanho do Texto">
+        </button>
+        <button id="toggle-captions" class="access-icon" title="Ativar/Desativar Legendas Simuladas">
+            <img src="legendas.png" alt="Ícone de Legendas">
+        </button>
+    </div>
+
+   <script>
+       const contrastButton = document.getElementById('toggle-contrast');
+       const textSizeButton = document.getElementById('toggle-text-size');
+       const resetTextButton = document.getElementById('reset-text-size');
+       const captionsButton = document.getElementById('toggle-captions');
+       const body = document.body;
+
+       if (contrastButton) {
+           contrastButton.addEventListener('click', () => {
+               body.classList.toggle('high-contrast');
+               contrastButton.classList.toggle('active', body.classList.contains('high-contrast'));
+               const accessibilityIcons = document.querySelector('.accessibility-icons');
+               if (accessibilityIcons) {
+                   accessibilityIcons.classList.toggle('high-contrast-icons', body.classList.contains('high-contrast'));
+               }
+           });
+       }
+
+       let originalStyles = new Map();
+       let currentTextMultiplier = 1.0;
+       const FONT_STEP_MULTIPLIER = 0.1;
+
+       const elementsToResizeConfig = [
+           { selector: '.logo-text', property: 'fontSize' },
+           { selector: '.cadastro-header', property: 'fontSize' },
+           { selector: '.campo-obrigatorio-info', property: 'fontSize' },
+           { selector: '.input-group label', property: 'fontSize' },
+           { selector: '.input-group input', property: 'fontSize' },
+           { selector: '.senha-requisitos-lista li', property: 'fontSize' },
+           { selector: '.checkbox-label', property: 'fontSize' },
+           { selector: '.btn-primary-cadastro', property: 'fontSize' },
+           { selector: '.simulated-caption', property: 'fontSize' }
+       ];
+
+       function storeOriginalStylesOnce() {
+           if (originalStyles.size === 0) {
+               elementsToResizeConfig.forEach(config => {
+                   document.querySelectorAll(config.selector).forEach(element => {
+                       if (!originalStyles.has(element)) {
+                           const originalValue = parseFloat(window.getComputedStyle(element)[config.property]);
+                           originalStyles.set(element, {
+                               originalValue: originalValue,
+                               property: config.property
+                           });
+                       }
+                   });
+               });
+           }
+       }
+
+       function applyTextStyles() {
+           if (originalStyles.size === 0) {
+               storeOriginalStylesOnce();
+               if (originalStyles.size === 0) return;
+           }
+
+           originalStyles.forEach((styleInfo, element) => {
+               const newValue = styleInfo.originalValue * currentTextMultiplier;
+               element.style[styleInfo.property] = newValue + 'px';
+           });
+       }
+      
+       document.addEventListener('DOMContentLoaded', () => {
+           storeOriginalStylesOnce();
+       });
+
+
+       if (textSizeButton) {
+           textSizeButton.addEventListener('click', () => {
+               if (originalStyles.size === 0) storeOriginalStylesOnce();
+               currentTextMultiplier += FONT_STEP_MULTIPLIER;
+               applyTextStyles();
+               textSizeButton.classList.toggle('active', currentTextMultiplier !== 1.0);
+               if(resetTextButton) resetTextButton.classList.toggle('active', currentTextMultiplier !== 1.0);
+           });
+       }
+
+       if (resetTextButton) {
+           resetTextButton.addEventListener('click', () => {
+               if (originalStyles.size === 0) storeOriginalStylesOnce();
+               currentTextMultiplier = 1.0;
+               applyTextStyles();
+               if(textSizeButton) textSizeButton.classList.remove('active');
+               resetTextButton.classList.remove('active');
+           });
+       }
+
+       const captionElements = document.querySelectorAll('.simulated-caption');
+       let captionsActive = false;
+
+       if (captionsButton) {
+           captionsButton.addEventListener('click', () => {
+               captionsActive = !captionsActive;
+               captionElements.forEach(caption => {
+                   caption.style.display = captionsActive ? 'block' : 'none';
+               });
+               captionsButton.classList.toggle('active', captionsActive);
+           });
+       }
+
+       const formCadastro = document.getElementById('formCadastro');
+       const emailInput = document.getElementById('email');
+       const confirmarEmailInput = document.getElementById('confirmar-email');
+       const senhaInput = document.getElementById('senha');
+       const confirmarSenhaInput = document.getElementById('confirmar-senha');
+
+       if (formCadastro) {
+           formCadastro.addEventListener('submit', function(event) {
+               if (emailInput.value !== confirmarEmailInput.value) {
+                   alert('Os emails não coincidem!');
+                   event.preventDefault();
+                   confirmarEmailInput.focus();
+                   return;
+               }
+               if (senhaInput.value !== confirmarSenhaInput.value) {
+                   alert('As senhas não coincidem!');
+                   event.preventDefault();
+                   confirmarSenhaInput.focus();
+                   return;
+               }
+           });
+       }
+   </script>
+</body>
+</html>
